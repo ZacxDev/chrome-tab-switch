@@ -10,6 +10,7 @@ export const COMMANDS = {
   "switch-to-prev-tab": { action: "switch", direction: "prev" },
   "move-tab-right": { action: "move", direction: "next" },
   "move-tab-left": { action: "move", direction: "prev" },
+  "switch-to-most-recent-tab": { action: "mru" },
 };
 
 /**
@@ -34,4 +35,40 @@ export function computeTargetIndex(direction, currentIndex, length) {
   }
 
   return null;
+}
+
+/**
+ * Move a just-activated tab to the front of the MRU list, removing any
+ * existing duplicate of it. The input array is never mutated.
+ *
+ * @param {number[]} mruList - Tab IDs, most-recent first.
+ * @param {number} activatedTabId - The tab that was just activated.
+ * @returns {number[]} A new MRU list with activatedTabId at the front.
+ */
+export function updateMru(mruList, activatedTabId) {
+  return [activatedTabId, ...mruList.filter(id => id !== activatedTabId)];
+}
+
+/**
+ * Remove a (e.g. closed) tab from the MRU list. The input is never mutated.
+ *
+ * @param {number[]} mruList - Tab IDs, most-recent first.
+ * @param {number} removedTabId - The tab to drop.
+ * @returns {number[]} A new MRU list without removedTabId.
+ */
+export function removeFromMru(mruList, removedTabId) {
+  return mruList.filter(id => id !== removedTabId);
+}
+
+/**
+ * Find the most-recently-used tab that isn't the current one — the
+ * "alt-tab" target.
+ *
+ * @param {number[]} mruList - Tab IDs, most-recent first.
+ * @param {number} currentTabId - The currently active tab.
+ * @returns {number|null} The target tab ID, or null if there is none.
+ */
+export function getMostRecentTabId(mruList, currentTabId) {
+  let target = mruList.find(id => id !== currentTabId);
+  return target === undefined ? null : target;
 }

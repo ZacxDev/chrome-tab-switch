@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Switcher",
   "version": "1.0",
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "storage"],
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
@@ -41,6 +41,9 @@
         "mac": "MacCtrl+Shift+Comma"
       },
       "description": "Move the current tab left"
+    },
+    "switch-to-most-recent-tab": {
+      "description": "Switch to the most recently used tab"
     }
   }
 }
