@@ -26,23 +26,33 @@ To change the shortcuts, visit `chrome://extensions/shortcuts`.
 
 ## Development
 
-The tab-index logic lives in [`tab-switch.js`](tab-switch.js) as a pure `computeNextIndex` function, isolated from the `chrome.*` API so it can be unit-tested. [`background.js`](background.js) is a thin service-worker listener that wires the Chrome APIs to that function.
+The decision logic lives in [`tab-switch.js`](tab-switch.js) as pure functions (`computeTargetIndex` and the `updateMru` / `removeFromMru` / `getMostRecentTabId` helpers), isolated from the `chrome.*` API so they can be unit-tested. [`background.js`](background.js) is a thin service-worker listener that wires the Chrome APIs to those functions.
 
 ```bash
 npm install      # install dev dependencies (Vitest, ESLint)
 npm test         # run the test suite once
 npm run test:watch
 npm run lint     # static analysis
+npm run build    # package a versioned zip for the Chrome Web Store
 ```
+
+## Packaging
+
+`npm run build` runs [`scripts/build.sh`](scripts/build.sh), which zips only the
+runtime files into `tab-switcher-<version>.zip` for upload. See
+[`docs/STORE.md`](docs/STORE.md) for the full submission checklist, listing copy,
+and permission justifications.
 
 ## Project layout
 
 | File | Role |
 |------|------|
 | `manifest.json` | Extension config: permissions, service worker, keyboard commands, icons |
-| `background.js` | Service worker — command listener (glue) |
-| `tab-switch.js` | Pure index logic (`computeNextIndex`) |
+| `background.js` | Service worker — command listener + MRU tracking (glue) |
+| `tab-switch.js` | Pure decision logic (index math + MRU helpers) |
 | `tab-switch.test.js` | Unit tests |
+| `scripts/build.sh` | Packages the runtime files into a store zip |
+| `docs/STORE.md` | Chrome Web Store submission reference |
 | `icon*.png` / `icon.svg` | Extension icons |
 
 ## License

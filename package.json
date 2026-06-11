@@ -7,7 +7,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "bash scripts/build.sh"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
