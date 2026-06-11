@@ -16,15 +16,31 @@
   "commands": {
     "switch-to-next-tab": {
       "suggested_key": {
-        "default": "Ctrl+Shift+L"
+        "default": "Ctrl+Shift+L",
+        "mac": "MacCtrl+Shift+L"
       },
       "description": "Switch to the next tab"
     },
     "switch-to-prev-tab": {
       "suggested_key": {
-        "default": "Ctrl+Shift+H"
+        "default": "Ctrl+Shift+H",
+        "mac": "MacCtrl+Shift+H"
       },
       "description": "Switch to the previous tab"
+    },
+    "move-tab-right": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Period",
+        "mac": "MacCtrl+Shift+Period"
+      },
+      "description": "Move the current tab right"
+    },
+    "move-tab-left": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Comma",
+        "mac": "MacCtrl+Shift+Comma"
+      },
+      "description": "Move the current tab left"
     }
   }
 }

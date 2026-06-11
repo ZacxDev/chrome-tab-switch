@@ -4,10 +4,14 @@ A minimal Chrome (Manifest V3) extension that adds Vim-style keyboard shortcuts 
 
 ## Features
 
-- **Next tab** — `Ctrl+Shift+L`
-- **Previous tab** — `Ctrl+Shift+H`
+| Action | Shortcut | Vim mnemonic |
+|--------|----------|--------------|
+| Switch to next tab | `Ctrl+Shift+L` | `l` = right |
+| Switch to previous tab | `Ctrl+Shift+H` | `h` = left |
+| Move current tab right | `Ctrl+Shift+.` | `>` = shift right |
+| Move current tab left | `Ctrl+Shift+,` | `<` = shift left |
 
-The `H`/`L` keys mirror Vim's left/right motions. Navigation wraps around: next from the last tab goes to the first, and previous from the first goes to the last. Operates within the current window.
+All four actions wrap around (next from the last tab goes to the first, etc.) and operate within the current window. On macOS the same bindings use the literal **Control** key (`MacCtrl`), not Command, for cross-platform consistency.
 
 ## Install (unpacked)
 
