@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="26" fill="#1a73e8"/>
+  <!-- two browser tabs -->
+  <rect x="24" y="34" width="44" height="30" rx="5" fill="#ffffff" opacity="0.45"/>
+  <rect x="60" y="34" width="44" height="30" rx="5" fill="#ffffff"/>
+  <!-- cycling arrows (next / prev) -->
+  <path d="M40 86 H78 l-10 -11 v7 H40 z" fill="#ffffff"/>
+  <path d="M88 102 H50 l10 11 v-7 H88 z" fill="#ffffff"/>
+</svg>
